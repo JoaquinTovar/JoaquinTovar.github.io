@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Joaquin Tovar · Product Portfolio</title>
+  <meta name="description" content="Product portfolio of Joaquin Tovar. Featured: Parback, a voice-assisted restaurant inventory prototype built around a counting workflow I know firsthand.">
+  <meta property="og:title" content="Joaquin Tovar · Product Portfolio">
+  <meta property="og:description" content="How I think about products: Parback, a voice-assisted restaurant inventory prototype, and other work.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://joaquintovar.github.io/">
+  <meta name="theme-color" content="#FAFAF7">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2316181D'/%3E%3Ctext x='32' y='42' font-family='Helvetica,Arial,sans-serif' font-size='26' font-weight='700' fill='%23FAFAF7' text-anchor='middle'%3EJT%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="wordmark" href="#top">Joaquin Tovar</a>
+      <nav aria-label="Primary">
+        <a href="#parback">Parback</a>
+        <a href="#other-work">Other work</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Intro -->
+    <section class="intro wrap" id="top">
+      <p class="eyebrow">Joaquin Tovar · Product builder</p>
+      <h1>Product thinking, grounded in the work people actually do.</h1>
+      <p class="lede">After years bartending in restaurants and bars, I'm building <strong>Parback</strong>, a voice-assisted inventory prototype for counts that are typically done by hand on a clipboard. The harder part is testing my assumptions instead of treating my own experience as proof.</p>
+      <div class="intro-links">
+        <a class="btn btn-primary" href="#parback">Read the Parback case study</a>
+        <a class="btn btn-ghost" href="resume/Joaquin_Tovar_Resume.pdf" target="_blank" rel="noopener">View résumé</a>
+      </div>
+      <ul class="quick-contact" aria-label="Contact">
+        <li><a href="mailto:tovarjoaquin93@gmail.com">tovarjoaquin93@gmail.com</a></li>
+        <li><a href="https://www.linkedin.com/in/joaquintovar" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/JoaquinTovar" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </section>
+
+    <!-- Parback -->
+    <article class="case" id="parback" aria-labelledby="parback-title">
+      <header class="case-head wrap">
+        <p class="eyebrow">Featured case study</p>
+        <h2 id="parback-title" class="case-title">Parback</h2>
+        <p class="case-sub">Voice-assisted inventory counting for restaurants and bars, designed for less friction.</p>
+        <ul class="status" aria-label="Project status">
+          <li>Personal project</li>
+          <li>Working prototype</li>
+          <li>Testing &amp; validation in progress</li>
+        </ul>
+        <p class="case-summary">Parback is a mobile-first, voice-assisted inventory prototype built around a counting workflow I experienced firsthand in restaurants and bars. It has not been publicly launched. So far, no one other than me has used it directly.</p>
+
+        <dl class="facts">
+          <div><dt>My role</dt><dd>Defined requirements, decided what to build, tested, troubleshot, and revised</dd></div>
+          <div><dt>How it was built</dt><dd>AI-assisted development, primarily with Claude</dd></div>
+          <div><dt>Platform</dt><dd>Mobile-first web app, tested on iPhone/Safari and in Chrome</dd></div>
+          <div><dt>Evidence so far</dt><dd>Firsthand experience, informal colleague feedback, and my own testing. No formal research or usability study yet.</dd></div>
+        </dl>
+
+        <nav class="toc" aria-label="Jump to a section of the case study">
+          <span class="toc-label">Jump to</span>
+          <a href="#problem">Problem</a>
+          <a href="#workflow">Workflow</a>
+          <a href="#decisions">Decisions</a>
+          <a href="#screens">Screenshots</a>
+          <a href="#testing">Testing</a>
+          <a href="#broke">What broke</a>
+          <a href="#changed">What changed</a>
+          <a href="#next">Validate next</a>
+          <a href="#learned">Learned</a>
+        </nav>
+      </header>
+
+      <!-- Evidence key -->
+      <aside class="key wrap" aria-labelledby="key-title">
+        <h3 id="key-title" class="key-title">How to read this case study</h3>
+        <p class="key-intro">Not every claim here carries the same weight. I label where each one comes from.</p>
+        <ul class="key-list">
+          <li><span class="tag t-observed">Observed firsthand</span><span>What I saw doing the work myself</span></li>
+          <li><span class="tag t-colleague">Colleague feedback</span><span>Informal conversations, not formal research</span></li>
+          <li><span class="tag t-tested">My testing</span><span>Testing I did myself</span></li>
+          <li><span class="tag t-hypothesis">Hypothesis</span><span>A belief I haven't tested</span></li>
+          <li><span class="tag t-built">Built, not validated</span><span>Exists in the product, unproven with users</span></li>
+          <li><span class="tag t-validate">To validate</span><span>Open questions I plan to answer</span></li>
+        </ul>
+      </aside>
+
+      <!-- 01 Problem -->
+      <section class="chapter wrap" id="problem" aria-labelledby="h-problem">
+        <div class="chapter-label"><span class="num">01</span><h3 id="h-problem">Problem</h3></div>
+        <div class="chapter-body">
+          <p class="big">Inventory counting is a recurring, hands-on job. Someone walks through the storage areas, identifies each product, and records a quantity.</p>
+
+          <div class="evidence">
+            <span class="tag t-observed">Observed firsthand</span>
+            <p>Counts are typically done by hand on a clipboard. In my experience, one person can count a small inventory, while a large one is often counted by two to keep it moving. Entering each count by hand is repetitive.</p>
+            <p>Ordering is also a separate step from counting. Distributors set a minimum per delivery, and the person doing the count often doesn't know those minimums. That knowledge usually sits with the manager, so the count and the order decision end up disconnected.</p>
+          </div>
+
+          <div class="evidence">
+            <span class="tag t-colleague">Colleague feedback</span>
+            <p>Colleagues have shared inventory pain points with me informally. One mentioned order minimums during service, which prompted me to build minimum tracking into the app. This was informal feedback, not formal research.</p>
+          </div>
+
+          <div class="evidence">
+            <span class="tag t-validate">To validate</span>
+            <p>Whether this friction is common across venues, how long counting actually takes, and whether Parback reduces it.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 02 Workflow -->
+      <section class="chapter wrap" id="workflow" aria-labelledby="h-workflow">
+        <div class="chapter-label"><span class="num">02</span><h3 id="h-workflow">Workflow</h3></div>
+        <div class="chapter-body">
+          <p class="big">Inventory isn't only data entry. A bartender moves through physical storage areas while identifying products and recording quantities, so the product needed to follow that movement instead of just offering a form.</p>
+
+          <ol class="flow" aria-label="Counting workflow">
+            <li><span class="flow-n">1</span><span class="flow-t">Move through a location</span></li>
+            <li><span class="flow-n">2</span><span class="flow-t">Identify the bottle or product</span></li>
+            <li><span class="flow-n">3</span><span class="flow-t">Record the count</span></li>
+            <li><span class="flow-n">4</span><span class="flow-t">Progress to the next location</span></li>
+            <li><span class="flow-n">5</span><span class="flow-t">Export the completed count</span></li>
+          </ol>
+
+          <div class="hypothesis">
+            <span class="tag t-hypothesis">Hypothesis, not yet tested</span>
+            <p>If manual entry is reduced and the interface follows the physical counting workflow, one person may be able to complete a count with less friction.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 03 Product decisions -->
+      <section class="chapter wrap" id="decisions" aria-labelledby="h-decisions">
+        <div class="chapter-label"><span class="num">03</span><h3 id="h-decisions">Product decisions</h3></div>
+        <div class="chapter-body">
+          <p>Each feature traces back to a specific need. The benefits are intended, not measured.</p>
+
+          <div class="decisions" role="table" aria-label="Product decisions">
+            <div class="d-row d-head" role="row">
+              <span role="columnheader">Need</span>
+              <span role="columnheader">Decision</span>
+              <span role="columnheader">Intended benefit <em>(not measured)</em></span>
+            </div>
+            <div class="d-row" role="row">
+              <span role="cell" data-label="Need">Entering each count by hand is repetitive</span>
+              <span role="cell" data-label="Decision"><strong>Voice-assisted input</strong></span>
+              <span role="cell" data-label="Intended benefit">Less manual entry during the count</span>
+            </div>
+            <div class="d-row" role="row">
+              <span role="cell" data-label="Need">People may prefer different ways to start voice input <span class="tag t-hypothesis sm">Design choice, untested</span></span>
+              <span role="cell" data-label="Decision"><strong>Hold-to-speak or tap-to-speak</strong>, switchable in settings</span>
+              <span role="cell" data-label="Intended benefit">Lets the counter use whichever input style fits how they work</span>
+            </div>
+            <div class="d-row" role="row">
+              <span role="cell" data-label="Need">Spoken counts need to become structured data</span>
+              <span role="cell" data-label="Decision"><strong>AI parsing</strong> into structured entries</span>
+              <span role="cell" data-label="Intended benefit">Spoken counts become usable records without retyping</span>
+            </div>
+            <div class="d-row" role="row">
+              <span role="cell" data-label="Need">Inventory is spread across physical storage areas</span>
+              <span role="cell" data-label="Decision"><strong>Selectable count locations</strong> (Well, Back Bar, Fridge, Liquor Room)</span>
+              <span role="cell" data-label="Intended benefit">Counts include the areas a venue actually uses</span>
+            </div>
+            <div class="d-row" role="row">
+              <span role="cell" data-label="Need">A counter needs orientation while moving through a space</span>
+              <span role="cell" data-label="Decision"><strong>Location-based progress bar</strong> <span class="tag t-built sm">Built; not yet triggered in testing</span></span>
+              <span role="cell" data-label="Intended benefit">Intended to show where you are in the count (not yet observed)</span>
+            </div>
+            <div class="d-row" role="row">
+              <span role="cell" data-label="Need">Fast voice entry makes accidental duplicates easy</span>
+              <span role="cell" data-label="Decision"><strong>Swipe-to-delete</strong> on entries</span>
+              <span role="cell" data-label="Intended benefit">A mistaken entry can be removed without restarting the count</span>
+            </div>
+            <div class="d-row" role="row">
+              <span role="cell" data-label="Need">Counts have to end up somewhere usable</span>
+              <span role="cell" data-label="Decision"><strong>CSV export</strong> for Excel or Google Sheets</span>
+              <span role="cell" data-label="Intended benefit">Finished counts open in tools a venue may already use</span>
+            </div>
+            <div class="d-row" role="row">
+              <span role="cell" data-label="Need">The count and the order decision are disconnected</span>
+              <span role="cell" data-label="Decision"><strong>Distributor minimums</strong> stored in the app's settings <span class="tag t-built sm">First step; no calculation yet</span></span>
+              <span role="cell" data-label="Intended benefit">Puts the order constraint inside the app, as groundwork for connecting counts to ordering (not yet built)</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 04 Screenshots -->
+      <section class="chapter chapter-wide" id="screens" aria-labelledby="h-screens">
+        <div class="wrap">
+          <div class="chapter-label"><span class="num">04</span><h3 id="h-screens">Product screenshots</h3></div>
+          <p class="screens-note">Screens from the working prototype, captured on iPhone. Item names are from my own test counts. Tap any screen to enlarge.</p>
+        </div>
+        <div class="screens">
+          <figure class="shot">
+            <button class="shot-btn" type="button" data-full="images/parback-voice-count.webp" aria-label="Enlarge: voice count screen">
+              <img src="images/parback-voice-count.webp" width="912" height="1642" loading="lazy" alt="Parback count screen in a dark theme. Back Bar and Vendor view toggle; Voice, Camera and Type input options with Voice selected; a large hold-to-speak record button; an example phrase reading “Tito's, 3, back bar”; and a Tonight's count summary showing 5 items logged and 5 needing info.">
+            </button>
+            <figcaption><strong>Core interaction.</strong> Speak the count instead of entering each item by hand.</figcaption>
+          </figure>
+          <figure class="shot">
+            <button class="shot-btn" type="button" data-full="images/parback-locations.webp" aria-label="Enlarge: count by location screen">
+              <img src="images/parback-locations.webp" width="914" height="1530" loading="lazy" alt="Parback Back Bar section view. A highlighted notice says one item needs a location, with a Location button next to Don Julio reposado at 0.8 bottles. Below, a Back Bar list of four items with fill bars and quantities.">
+            </button>
+            <figcaption><strong>Workflow design.</strong> Organizes inventory by physical location and surfaces items that still need to be assigned one.</figcaption>
+          </figure>
+          <figure class="shot">
+            <button class="shot-btn" type="button" data-full="images/parback-distributor-minimums.webp" aria-label="Enlarge: distributor minimums screen">
+              <img src="images/parback-distributor-minimums.webp" width="825" height="1542" loading="lazy" alt="Parback Distributor Minimums settings panel with cards for two distributors. Each card has empty placeholder fields for rep name, order day, rep phone, rep email, order minimum and drop fee if short.">
+            </button>
+            <figcaption><strong>Beyond counting.</strong> Stores an ordering constraint surfaced through colleague feedback. Minimums are stored today; calculating orders against them isn't built yet.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- 05 Testing & iteration -->
+      <section class="chapter wrap" id="testing" aria-labelledby="h-testing">
+        <div class="chapter-label"><span class="num">05</span><h3 id="h-testing">Testing &amp; iteration</h3></div>
+        <div class="chapter-body">
+          <dl class="method">
+            <div>
+              <dt><span class="tag t-tested">My testing</span></dt>
+              <dd>Mock inventory counts at work, counts at home with my own bottle collection, and testing on iPhone/Safari.</dd>
+            </div>
+            <div>
+              <dt><span class="tag t-colleague">Colleague feedback</span></dt>
+              <dd>Informal feedback from restaurant colleagues.</dd>
+            </div>
+          </dl>
+          <p class="scope"><strong>Scope.</strong> This is testing by me plus informal colleague feedback, not a formal usability study. No one other than me has used the product directly.</p>
+
+          <h4 class="sub">Built before testing</h4>
+          <p>I added these on my own judgment before any testing. They aren't validated with users, so I treat them as hypotheses.</p>
+          <ul class="built">
+            <li><span class="tag t-built sm">Built, not validated</span><strong>CSV/Excel import</strong><span>Upload an existing spreadsheet; AI maps the columns. Merge with or replace the current inventory.</span></li>
+            <li><span class="tag t-built sm">Built, not validated</span><strong>Camera scan</strong><span>Photograph a shelf and AI vision identifies bottles.</span></li>
+            <li><span class="tag t-built sm">Built, not validated</span><strong>Batch cocktails</strong><span>A manager sets recipes and ratios; staff count fl oz remaining, and the spirits are added to inventory.</span></li>
+            <li><span class="tag t-built sm">Built, not validated</span><strong>Count code</strong><span>A manager sets a code for each count cycle, shares it with staff, then changes it after the count is submitted.</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 06 What broke -->
+      <section class="chapter wrap" id="broke" aria-labelledby="h-broke">
+        <div class="chapter-label"><span class="num">06</span><h3 id="h-broke">What broke</h3></div>
+        <div class="chapter-body">
+          <p>Four things surfaced in my own testing.</p>
+          <ol class="issues">
+            <li>
+              <h4>Voice input failed silently on Safari</h4>
+              <p>Voice parsing worked in Chrome but failed in Safari on iPhone without showing any error. I'm designing for a phone, and a desktop-only test would have missed it. A failure with no visible error is worse than one you can see.</p>
+            </li>
+            <li>
+              <h4>Fast voice entry made double-counts easy</h4>
+              <p>Counting at home, I added the same bottle twice by calling it out again after I'd already counted it. An early bug had also merged duplicate entries.</p>
+            </li>
+            <li>
+              <h4>Spoken brand names were misparsed</h4>
+              <p>The parser was working from the raw transcript or letting the AI guess brand names.</p>
+            </li>
+            <li>
+              <h4>The progress bar never triggered</h4>
+              <p>The location progress bar never triggered in home testing. Par levels default to zero, and there's no editable par field yet.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- 07 What changed -->
+      <section class="chapter wrap" id="changed" aria-labelledby="h-changed">
+        <div class="chapter-label"><span class="num">07</span><h3 id="h-changed">What changed</h3></div>
+        <div class="chapter-body">
+          <p>Each change below matches the problem with the same number in <a href="#broke">What broke</a>.</p>
+          <ol class="issues changes">
+            <li>
+              <span class="state fixed">Fixed</span>
+              <h4>Traced the Safari failure and fixed it</h4>
+              <p>It was a Safari-specific request issue. <span class="tag t-validate sm">To validate</span> I tested on iPhone because I expect that's what venue staff carry. I haven't confirmed that.</p>
+            </li>
+            <li>
+              <span class="state fixed">Changed</span>
+              <h4>One row per entry, plus swipe-to-delete</h4>
+              <p>After the merge bug, I changed the app to add a new row for each entry so every bottle stays visible. That left no way to remove a mistaken row, so I added swipe-to-delete as error recovery. For a voice-first tool, fast input only works if mistakes are cheap to fix.</p>
+            </li>
+            <li>
+              <span class="state fixed">Changed</span>
+              <h4>Matched speech against the existing inventory</h4>
+              <p>The parser now matches against the existing inventory list instead of relying on the raw transcript or letting the AI guess.</p>
+            </li>
+            <li>
+              <span class="state open">Not fixed</span>
+              <h4>Progress bar is still open</h4>
+              <p>Without editable par levels, the progress feature is built but unvalidated.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- 08 Validate next -->
+      <section class="chapter wrap" id="next" aria-labelledby="h-next">
+        <div class="chapter-label"><span class="num">08</span><h3 id="h-next">What I'd validate next</h3></div>
+        <div class="chapter-body">
+          <p><span class="tag t-validate">Planned, not completed</span></p>
+          <ul class="next">
+            <li>Observe bartenders and managers doing real inventory counts, and establish baseline count time and common errors.</li>
+            <li>Have people other than me test Parback, across different venue layouts and devices.</li>
+            <li>Measure whether voice input reduces friction or introduces new correction and error patterns.</li>
+            <li>Test whether the location and progress model generalizes beyond the workflows I already know.</li>
+            <li>Learn how managers actually move from a completed count to an order before building recommendations around stored distributor minimums.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 09 Learned -->
+      <section class="chapter wrap" id="learned" aria-labelledby="h-learned">
+        <div class="chapter-label"><span class="num">09</span><h3 id="h-learned">What I learned</h3></div>
+        <div class="chapter-body">
+          <ul class="lessons">
+            <li>Firsthand domain knowledge is useful, but it doesn't replace user validation.</li>
+            <li>Understand the real workflow before designing the interface.</li>
+            <li>Turn pain points into specific requirements.</li>
+            <li>Shipping something testable exposes assumptions.</li>
+            <li>Product decisions should follow evidence, not attachment to the original idea.</li>
+            <li>Building features before testing is easy. Knowing which ones matter takes validation.</li>
+          </ul>
+        </div>
+      </section>
+    </article>
+
+    <!-- Other work -->
+    <section class="other wrap" id="other-work" aria-labelledby="h-other">
+      <p class="eyebrow">Other work</p>
+      <h2 id="h-other">Other projects</h2>
+      <div class="cards">
+        <article class="card">
+                    <h3>Art in Action MIS Practicum</h3>
+          <p class="placeholder">[NEEDS SOURCE: one or two lines on what you did]</p>
+        </article>
+        <article class="card">
+          <h3>Restaurant Mobile App</h3>
+          <p class="card-kicker">Systems Analysis &amp; Design</p>
+          <p class="placeholder">[NEEDS SOURCE: one or two lines on what you did]</p>
+        </article>
+        <article class="card">
+                    <h3>Data-Driven Business Insights</h3>
+          <p class="placeholder">[NEEDS SOURCE: one or two lines on what you did]</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact wrap" id="contact" aria-labelledby="h-contact">
+      <h2 id="h-contact">Let's talk.</h2>
+      <p>I'm happy to walk through Parback, the decisions behind it, and what I'd test next.</p>
+      <ul class="contact-links">
+        <li><a href="mailto:tovarjoaquin93@gmail.com">tovarjoaquin93@gmail.com</a></li>
+        <li><a href="https://www.linkedin.com/in/joaquintovar" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/JoaquinTovar" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>© 2026 Joaquin Tovar. Parback is a personal project and working prototype.</p>
+    </div>
+  </footer>
+
+  <dialog class="lightbox" aria-label="Enlarged screenshot">
+    <button class="lightbox-close" type="button" aria-label="Close">×</button>
+    <img alt="">
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
